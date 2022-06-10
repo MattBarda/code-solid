@@ -13,7 +13,7 @@ class UserManager
 
     public function __construct(
         UserPasswordEncoderInterface $passwordEncoder,
-        EntityManagerInterface $entityManager,
+        EntityManagerInterface $entityManager
     ) {
         $this->passwordEncoder = $passwordEncoder;
         $this->entityManager = $entityManager;
