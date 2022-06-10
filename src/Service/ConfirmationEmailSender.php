@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Security;
+namespace App\Service;
 
 use App\Entity\User;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
