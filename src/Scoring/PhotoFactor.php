@@ -4,7 +4,7 @@ namespace App\Scoring;
 
 use App\Entity\BigFootSighting;
 
-class PhotoFactor implements ScoringFactorInterface
+class PhotoFactor implements ScoringFactorInterface, ScoreAdjusterInterface
 {
     public function score(BigFootSighting $sighting): int
     {
@@ -16,5 +16,15 @@ class PhotoFactor implements ScoringFactorInterface
             $score += rand(1, 100); // todo analyze image
         }
         return $score;
+    }
+
+    public function adjustScore(int $finalScore, BigFootSighting $sighting): int
+    {
+        $photosCount = count($sighting->getImages());
+        if ($finalScore < 50 && $photosCount > 2) {
+            $finalScore += $photosCount * 5;
+        }
+
+        return $finalScore;
     }
 }
